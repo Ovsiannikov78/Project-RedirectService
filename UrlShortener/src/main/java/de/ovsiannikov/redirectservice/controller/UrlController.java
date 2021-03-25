@@ -14,14 +14,6 @@ public class UrlController {
         this.urlService = urlService;
     }
 
-    @GetMapping("short_server/{id}")
-    public String redirectToLongUrl(@PathVariable Long id) {
-
-        String longUrl = urlService.getLongUrl(id);
-
-        return "redirect:/" + longUrl;
-    }
-
     @PostMapping("server/urls")
     public Url addNewUrl(@RequestBody String url) {
         return urlService.saveUrl(url);

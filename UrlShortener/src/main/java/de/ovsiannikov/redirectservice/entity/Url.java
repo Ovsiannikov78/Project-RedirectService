@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @NoArgsConstructor
@@ -25,9 +26,17 @@ public class Url {
     @Setter
     private String longUrl;
 
-    public Url(String shortUrl, String longUrl) {
+    @Column(name = "customer_number")
+    private Integer customerNumber;
+
+    @Column(name = "expiration_date")
+    private String expirationDate;
+
+    public Url(String shortUrl, String longUrl, Integer customerNumber, String expirationDate) {
         this.shortUrl = shortUrl;
         this.longUrl = longUrl;
+        this.customerNumber = customerNumber;
+        this.expirationDate = expirationDate;
     }
 
     @Override
@@ -36,6 +45,8 @@ public class Url {
                 "id=" + id +
                 ", shortUrl='" + shortUrl + '\'' +
                 ", longUrl='" + longUrl + '\'' +
+                ", customerNumber=" + customerNumber +
+                ", expirationDate='" + expirationDate + '\'' +
                 '}';
     }
 }

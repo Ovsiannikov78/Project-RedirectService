@@ -1,6 +1,12 @@
--- -----------------------------------------------------
--- Table `redirect-service`.`url`
--- -----------------------------------------------------
+CREATE
+DATABASE IF NOT EXISTS `redirect-service`;
+USE
+`redirect-service`;
+
+--
+-- Table structure for table `url`
+--
+
 CREATE TABLE IF NOT EXISTS `url`
 (
     `id`
@@ -17,6 +23,11 @@ CREATE TABLE IF NOT EXISTS `url`
 (
     255
 ) NOT NULL DEFAULT '',
+    `customer_number` INTEGER DEFAULT NULL,
+    `expiration_date` VARCHAR
+(
+    255
+) NULL DEFAULT NULL,
     PRIMARY KEY
 (
     `id`

@@ -7,6 +7,8 @@ import org.apache.commons.validator.routines.UrlValidator;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
+
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,16 +28,18 @@ public class UrlServiceImpl implements UrlService {
         return urlRepository.findAll();
     }
 
+
     @Override
     public Url saveUrl(String url) {
-        Url theUrl = new Url(generateShortUrl(url), url);
+
+        Url theUrl = new Url(generateShortUrl(url), url, 0, createUrlExpirationDate());
         return urlRepository.save(theUrl);
 
     }
 
     @Override
     public Url getUrl(Long id) {
-        Url url = null;
+        Url url;
         Optional<Url> optionalUrl = urlRepository.findById(id);
         if (optionalUrl.isPresent()) {
             url = optionalUrl.get();
@@ -50,18 +54,6 @@ public class UrlServiceImpl implements UrlService {
         urlRepository.deleteById(id);
     }
 
-    @Override
-    public String getLongUrl(Long id) {
-
-        String shortUrl;
-        Optional<Url> optionalUrl = urlRepository.findById(id);
-        if (optionalUrl.isPresent()) {
-            shortUrl = optionalUrl.get().getLongUrl();
-        } else {
-            throw new RuntimeException("Url not found.");
-        }
-        return shortUrl;
-    }
 
     private String generateShortUrl(String url) {
 
@@ -75,5 +67,10 @@ public class UrlServiceImpl implements UrlService {
         return generatedShortUrl;
     }
 
+    private String createUrlExpirationDate() {
+        LocalDateTime date = LocalDateTime.now().plusDays(3);
 
+        return date.toString();
+
+    }
 }

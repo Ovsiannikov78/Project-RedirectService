@@ -1,8 +1,8 @@
 package de.ovsiannikov.redirectservice.service;
 
 import de.ovsiannikov.redirectservice.entity.Url;
-
 import java.util.List;
+
 
 public interface UrlService {
 
@@ -14,5 +14,4 @@ public interface UrlService {
 
      void deleteUrl(Long id);
 
-     String getLongUrl(Long id);
 }
