@@ -3,8 +3,9 @@ package de.ovsiannikov.redirectservice.service;
 import de.ovsiannikov.redirectservice.dao.UrlRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.Optional;
 
 @Service
@@ -18,10 +19,10 @@ public class RedirectServiceImpl implements RedirectService {
 
     @Override
     public Optional<String> getRedirectUrl(String shortUrl) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm", Locale.GERMANY);
 
-        LocalDate expirationDate = LocalDate.from(formatter.parse(urlRepository.findByShortUrl(shortUrl).getExpirationDate()));
-        LocalDate currentDate = LocalDate.now();
+        LocalDateTime expirationDate = LocalDateTime.from(formatter.parse(urlRepository.findByShortUrl(shortUrl).getExpirationDate()));
+        LocalDateTime currentDate = LocalDateTime.now();
 
         if (!shortUrl.isBlank() && currentDate.isBefore(expirationDate)) {
             return Optional.ofNullable(urlRepository.findByShortUrl(shortUrl).getLongUrl());
