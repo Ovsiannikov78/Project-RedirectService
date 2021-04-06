@@ -4,10 +4,10 @@ import com.google.common.hash.Hashing;
 import de.ovsiannikov.redirectservice.dao.UrlRepository;
 import org.apache.commons.validator.routines.UrlValidator;
 import org.springframework.stereotype.Service;
-
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 
 @Service
@@ -35,12 +35,12 @@ public class HelperService {
     }
 
     public String createUrlExpirationDate(String expirationDate) {
-        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm", Locale.GERMANY);
 
         if (expirationDate == null || expirationDate.isBlank()) {
-            return LocalDate.now().plusDays(3).format(inputFormatter);
+            return LocalDateTime.now().plusDays(3).format(inputFormatter);
         } else {
-            LocalDate dateTime = LocalDate.parse(expirationDate, inputFormatter);
+            LocalDateTime dateTime = LocalDateTime.parse(expirationDate, inputFormatter);
             return dateTime.format(inputFormatter);
         }
     }
