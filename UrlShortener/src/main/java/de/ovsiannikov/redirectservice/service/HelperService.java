@@ -1,17 +1,20 @@
 package de.ovsiannikov.redirectservice.service;
 
-import com.google.common.hash.Hashing;
 import de.ovsiannikov.redirectservice.dao.UrlRepository;
 import org.apache.commons.validator.routines.UrlValidator;
 import org.springframework.stereotype.Service;
-import java.nio.charset.StandardCharsets;
+import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Base64;
 import java.util.Locale;
 
 
 @Service
 public class HelperService {
+
+    private static final SecureRandom random = new SecureRandom();
+    private static final Base64.Encoder encoder = Base64.getUrlEncoder().withoutPadding();
 
     private final UrlValidator validator = new UrlValidator(new String[]{"http", "https"});
 
@@ -21,18 +24,10 @@ public class HelperService {
         this.urlRepository = urlRepository;
     }
 
-    // TODO add id for unique short url
-
-    public String generateShortUrl(String longUrl) {
-
-        String generatedShortUrl;
-
-        if (validator.isValid(longUrl) && longUrl != null) {
-            generatedShortUrl = Hashing.murmur3_32().hashString(longUrl, StandardCharsets.UTF_8).toString();
-        } else {
-            throw new RuntimeException("Invalid url - " + longUrl);
-        }
-        return generatedShortUrl;
+    public String generateShortUrl() {
+        byte[] buffer = new byte[12];
+        random.nextBytes(buffer);
+        return encoder.encodeToString(buffer);
     }
 
     public LocalDateTime createUrlExpirationDate(LocalDateTime expirationDate) {
