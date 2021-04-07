@@ -1,5 +1,4 @@
 package de.ovsiannikov.redirectservice.controller;
-
 import de.ovsiannikov.redirectservice.service.RedirectService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -9,6 +8,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
 
 import java.util.Optional;
 
@@ -47,7 +47,7 @@ class RedirectControllerTest {
     void testRedirectUrlNotFound() throws Exception {
 
         when(redirectService.getRedirectUrl(shortUrl))
-                .thenReturn(Optional.empty());
+                .thenReturn(Optional.<String>empty());
 
         mockMvc.perform(get("/" + shortUrl))
                 .andExpect(status().isNotFound())

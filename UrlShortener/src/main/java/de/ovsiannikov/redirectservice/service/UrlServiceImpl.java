@@ -26,7 +26,7 @@ public class UrlServiceImpl implements UrlService {
     @Override
     public Url createUrl(String longUrl,Long customerNumber, LocalDateTime expirationDate) {
 
-        Url url = new Url(helperService.generateShortUrl(longUrl), longUrl, 0, helperService.createUrlExpirationDate(expirationDate));
+        Url url = new Url(helperService.generateShortUrl(), longUrl, 0, helperService.createUrlExpirationDate(expirationDate));
         return urlRepository.save(url);
 
     }
