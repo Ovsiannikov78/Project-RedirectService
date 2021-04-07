@@ -34,7 +34,6 @@ class RedirectControllerTest {
     void testRedirectToLongUrl() throws Exception {
 
         when(redirectService.getRedirectUrl(shortUrl))
-                /*.thenReturn(Optional.of(longUrl));*/
                 .thenReturn(Optional.of(longUrl));
 
         mockMvc.perform(get("/" + shortUrl))

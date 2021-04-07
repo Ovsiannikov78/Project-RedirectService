@@ -5,23 +5,23 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.Optional;
 
 @RestController
 public class RedirectController {
 
-    final RedirectService redirectService;
+    private final RedirectService redirectService;
 
     public RedirectController(RedirectService redirectService) {
         this.redirectService = redirectService;
     }
 
+
     @GetMapping("/{shortUrl}")
-    public ResponseEntity<String> redirectToLongUrl(@PathVariable String shortUrl) {
+    public ResponseEntity<Object> redirectToLongUrl(@PathVariable String shortUrl) {
         Optional<String> longUrl = redirectService.getRedirectUrl(shortUrl);
 
-        return longUrl.map(c -> ResponseEntity.status(302).body(c))
+        return longUrl.map(url -> ResponseEntity.status(302).header("Location", url).build())
                 .orElse(ResponseEntity.notFound().build());
     }
 }

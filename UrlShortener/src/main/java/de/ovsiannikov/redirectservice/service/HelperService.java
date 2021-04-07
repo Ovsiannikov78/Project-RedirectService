@@ -21,27 +21,27 @@ public class HelperService {
         this.urlRepository = urlRepository;
     }
 
+    // TODO add id for unique short url
 
-    public String generateShortUrl(String url) {
+    public String generateShortUrl(String longUrl) {
 
         String generatedShortUrl;
 
-        if (validator.isValid(url) && url != null) {
-            generatedShortUrl = Hashing.murmur3_32().hashString(url, StandardCharsets.UTF_8).toString();
+        if (validator.isValid(longUrl) && longUrl != null) {
+            generatedShortUrl = Hashing.murmur3_32().hashString(longUrl, StandardCharsets.UTF_8).toString();
         } else {
-            throw new RuntimeException("Invalid url - " + url);
+            throw new RuntimeException("Invalid url - " + longUrl);
         }
         return generatedShortUrl;
     }
 
-    public String createUrlExpirationDate(String expirationDate) {
-        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm", Locale.GERMANY);
+    public LocalDateTime createUrlExpirationDate(LocalDateTime expirationDate) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm", Locale.GERMANY);
 
-        if (expirationDate == null || expirationDate.isBlank()) {
-            return LocalDateTime.now().plusDays(3).format(inputFormatter);
+        if (expirationDate == null) {
+            return LocalDateTime.parse(LocalDateTime.now().plusMinutes(3).format(formatter),formatter) ;  //with minutes for testing only
         } else {
-            LocalDateTime dateTime = LocalDateTime.parse(expirationDate, inputFormatter);
-            return dateTime.format(inputFormatter);
+            return LocalDateTime.parse(expirationDate.toString(), formatter);
         }
     }
 }

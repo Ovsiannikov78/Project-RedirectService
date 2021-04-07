@@ -1,13 +1,8 @@
 package de.ovsiannikov.redirectservice.service;
 
-import com.google.common.hash.Hashing;
 import de.ovsiannikov.redirectservice.dao.UrlRepository;
 import de.ovsiannikov.redirectservice.entity.Url;
-import org.apache.commons.validator.routines.UrlValidator;
 import org.springframework.stereotype.Service;
-
-import java.nio.charset.StandardCharsets;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -15,11 +10,11 @@ import java.util.Optional;
 @Service
 public class UrlServiceImpl implements UrlService {
 
-    UrlValidator validator = new UrlValidator(new String[]{"http", "https"});
-
+    private final HelperService helperService;
     private final UrlRepository urlRepository;
 
-    public UrlServiceImpl(UrlRepository urlRepository) {
+    public UrlServiceImpl(HelperService helperService, UrlRepository urlRepository) {
+        this.helperService = helperService;
         this.urlRepository = urlRepository;
     }
 
@@ -28,12 +23,11 @@ public class UrlServiceImpl implements UrlService {
         return urlRepository.findAll();
     }
 
-
     @Override
-    public Url saveUrl(String url) {
+    public Url createUrl(String longUrl,Long customerNumber, LocalDateTime expirationDate) {
 
-        Url theUrl = new Url(generateShortUrl(url), url, 0, createUrlExpirationDate());
-        return urlRepository.save(theUrl);
+        Url url = new Url(helperService.generateShortUrl(longUrl), longUrl, 0, helperService.createUrlExpirationDate(expirationDate));
+        return urlRepository.save(url);
 
     }
 
@@ -52,25 +46,5 @@ public class UrlServiceImpl implements UrlService {
     @Override
     public void deleteUrl(Long id) {
         urlRepository.deleteById(id);
-    }
-
-
-    private String generateShortUrl(String url) {
-
-        String generatedShortUrl;
-
-        if (validator.isValid(url) && url != null) {
-            generatedShortUrl = Hashing.murmur3_32().hashString(url, StandardCharsets.UTF_8).toString();
-        } else {
-            throw new RuntimeException("Invalid url - " + url);
-        }
-        return generatedShortUrl;
-    }
-
-    private String createUrlExpirationDate() {
-        LocalDateTime date = LocalDateTime.now().plusDays(3);
-
-        return date.toString();
-
     }
 }
