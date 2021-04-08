@@ -1,4 +1,4 @@
-/*package de.ovsiannikov.redirectservice.service;
+package de.ovsiannikov.redirectservice.service;
 
 import de.ovsiannikov.redirectservice.dao.UrlRepository;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -20,4 +20,4 @@ public class ExpiredUrlRemovalService {
 
         urlRepository.deleteUrlByExpirationDateBefore(LocalDateTime.now());
     }
-}*/
+}
