@@ -18,6 +18,8 @@ public class ExpiredUrlRemovalService {
     @Scheduled(fixedRate = 60000)
     public void deleteExpiredUrl() {
 
-        urlRepository.deleteUrlByExpirationDateBefore(LocalDateTime.now());
+        // TODO Logger with message how many urls was deleted
+
+      urlRepository.deleteUrlByExpirationDateBefore(LocalDateTime.now());
     }
 }
