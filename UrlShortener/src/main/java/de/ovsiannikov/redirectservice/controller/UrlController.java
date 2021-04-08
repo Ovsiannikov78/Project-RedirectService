@@ -4,6 +4,7 @@ import de.ovsiannikov.redirectservice.dto.LongUrlDto;
 import de.ovsiannikov.redirectservice.dto.ShortUrlDto;
 import de.ovsiannikov.redirectservice.entity.Url;
 import de.ovsiannikov.redirectservice.service.UrlService;
+import de.ovsiannikov.redirectservice.validator.UrlsValidator;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

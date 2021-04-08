@@ -16,8 +16,6 @@ public class HelperService {
     private static final SecureRandom random = new SecureRandom();
     private static final Base64.Encoder encoder = Base64.getUrlEncoder().withoutPadding();
 
-    private final UrlValidator validator = new UrlValidator(new String[]{"http", "https"});
-
     private final UrlRepository urlRepository;
 
     public HelperService(UrlRepository urlRepository) {

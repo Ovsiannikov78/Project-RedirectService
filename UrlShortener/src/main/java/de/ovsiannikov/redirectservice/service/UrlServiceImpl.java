@@ -31,6 +31,8 @@ public class UrlServiceImpl implements UrlService {
 
     }
 
+    // TODO do we need the isPresent() check here if we have a validator ???
+
     @Override
     public Url getUrl(Long id) {
         Url url;
