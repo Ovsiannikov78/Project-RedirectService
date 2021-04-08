@@ -25,7 +25,7 @@ public class HelperService {
     }
 
     public String generateShortUrl() {
-        byte[] buffer = new byte[12];
+        byte[] buffer = new byte[8];
         random.nextBytes(buffer);
         return encoder.encodeToString(buffer);
     }
