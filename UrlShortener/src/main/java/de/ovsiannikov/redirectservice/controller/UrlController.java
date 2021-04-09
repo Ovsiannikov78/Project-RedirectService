@@ -7,6 +7,7 @@ import de.ovsiannikov.redirectservice.service.UrlService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
 
 
 @RestController
@@ -19,7 +20,7 @@ public class UrlController {
     }
 
     @PostMapping("/urls")
-    public ResponseEntity<ShortUrlDto> create(@RequestBody LongUrlDto longUrlDto) {
+    public ResponseEntity<ShortUrlDto> create(@Valid @RequestBody LongUrlDto longUrlDto) {
 
         Url url = urlService.createUrl(longUrlDto.getLongUrl(), longUrlDto.getCustomerNumber(), longUrlDto.getExpirationDate());
         return new ResponseEntity<>(new ShortUrlDto(url.getId(), url.getShortUrl()), HttpStatus.OK);
