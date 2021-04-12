@@ -26,9 +26,7 @@ public class UrlController {
         return new ResponseEntity<>(new ShortUrlDto(url.getId(), url.getShortUrl()), HttpStatus.OK);
     }
 
-    // TODO should I here also use ResponseEntity ?
-
-    @DeleteMapping("server/urls/{id}")
+    @DeleteMapping("/urls/{id}")
     public String deleteUrl(@PathVariable Long id) {
         urlService.deleteUrl(id);
 
