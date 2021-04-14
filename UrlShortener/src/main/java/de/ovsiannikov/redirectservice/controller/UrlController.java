@@ -22,7 +22,7 @@ public class UrlController {
     @PostMapping("/urls")
     public ResponseEntity<ShortUrlDto> create(@Valid @RequestBody LongUrlDto longUrlDto) {
 
-        Url url = urlService.createUrl(longUrlDto.getLongUrl(), longUrlDto.getCustomerNumber(), longUrlDto.getExpirationDate());
+        Url url = urlService.createUrl(longUrlDto);
         return new ResponseEntity<>(new ShortUrlDto(url.getId(), url.getShortUrl()), HttpStatus.OK);
     }
 
