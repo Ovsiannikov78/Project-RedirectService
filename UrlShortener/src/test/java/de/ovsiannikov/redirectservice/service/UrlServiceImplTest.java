@@ -4,7 +4,6 @@ import de.ovsiannikov.redirectservice.dao.UrlRepository;
 import de.ovsiannikov.redirectservice.entity.Url;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.time.LocalDateTime;
 
 import static de.ovsiannikov.redirectservice.prototype.UrlsPrototype.*;
@@ -17,6 +16,7 @@ class UrlServiceImplTest {
 
     private final LocalDateTime testDate = LocalDateTime.of(2021,4,14,10,00,00);
     private final static LocalDateTime testDateFromUser = LocalDateTime.of(2021,8,10,12,00,00);
+    private final static LocalDateTime testInvalidDateFromUser = LocalDateTime.of(2020,8,10,12,00,00);
 
     private  HelperService helperService;
     private  UrlRepository urlRepository;
@@ -45,5 +45,14 @@ class UrlServiceImplTest {
         assertThat(url).isNotNull();
         assertThat(url.getExpirationDate()).isEqualTo(testDateFromUser);
         assertThat(url.getExpirationDate()).isAfter(testDate);
+    }
+
+    @Test
+    void testCreateUrlWithInvalidExpirationDateFromUser() {
+        when(urlRepository.save(any())).thenReturn(testUrlWithInvalidExpirationDateFromUser());
+        Url url = urlService.createUrl(testLongUrlDtoWithExpirationDateFromUser(testInvalidDateFromUser));
+        assertThat(url).isNotNull();
+        assertThat(url.getExpirationDate()).isNotEqualTo(testDate);
+        assertThat(url.getExpirationDate()).isBefore(testDate);
     }
 }
