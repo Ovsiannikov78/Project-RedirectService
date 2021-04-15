@@ -1,10 +1,6 @@
 package de.ovsiannikov.redirectservice.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.hibernate.validator.constraints.URL;
+import lombok.*;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
@@ -13,6 +9,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
+@Data
 public class LongUrlDto {
 
     public Long customerNumber;
