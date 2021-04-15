@@ -2,7 +2,6 @@ package de.ovsiannikov.redirectservice.controller;
 
 import de.ovsiannikov.redirectservice.dto.LongUrlDto;
 import de.ovsiannikov.redirectservice.dto.ShortUrlDto;
-import de.ovsiannikov.redirectservice.entity.Url;
 import de.ovsiannikov.redirectservice.service.UrlService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,15 +19,12 @@ public class UrlController {
     }
 
     @PostMapping("/urls")
-    public ResponseEntity<ShortUrlDto> create(@Valid @RequestBody LongUrlDto longUrlDto) {
+    public ResponseEntity<ShortUrlDto> createShortUrlDto(@Valid @RequestBody LongUrlDto longUrlDto) {
 
-        Url url = urlService.createUrl(longUrlDto.getLongUrl(), longUrlDto.getCustomerNumber(), longUrlDto.getExpirationDate());
-        return new ResponseEntity<>(new ShortUrlDto(url.getId(), url.getShortUrl()), HttpStatus.OK);
+        return new ResponseEntity<>(urlService.createShortUrlDto(longUrlDto), HttpStatus.OK);
     }
 
-    // TODO should I here also use ResponseEntity ?
-
-    @DeleteMapping("server/urls/{id}")
+    @DeleteMapping("/urls/{id}")
     public String deleteUrl(@PathVariable Long id) {
         urlService.deleteUrl(id);
 

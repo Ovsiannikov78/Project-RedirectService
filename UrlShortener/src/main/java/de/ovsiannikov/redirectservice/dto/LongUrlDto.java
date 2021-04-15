@@ -20,6 +20,6 @@ public class LongUrlDto {
     @NotBlank(message = "Please provide a url")
     public String longUrl;
 
-    @Future(message = "The date can' t be in the past. Please provide a valid date.")
+    @Future(message = "The date can't be in the past. Please provide a valid date.")
     public LocalDateTime expirationDate;
 }

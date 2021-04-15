@@ -1,14 +1,13 @@
 package de.ovsiannikov.redirectservice.entity;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Data
 @NoArgsConstructor
-@Getter
 @Table(name = "url")
 public class Url {
 
@@ -18,11 +17,9 @@ public class Url {
     private Long id;
 
     @Column(name = "short_url")
-    @Setter
     private String shortUrl;
 
     @Column(name = "long_url")
-    @Setter
     private String longUrl;
 
     @Column(name = "customer_number")
@@ -36,17 +33,5 @@ public class Url {
         this.longUrl = longUrl;
         this.customerNumber = customerNumber;
         this.expirationDate = expirationDate;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Url{" +
-                "id=" + id +
-                ", shortUrl='" + shortUrl + '\'' +
-                ", longUrl='" + longUrl + '\'' +
-                ", customerNumber=" + customerNumber +
-                ", expirationDate='" + expirationDate + '\'' +
-                '}';
     }
 }
