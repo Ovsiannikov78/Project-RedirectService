@@ -1,10 +1,10 @@
-/*CREATE
-DATABASE IF NOT EXISTS `redirect-service`;
-USE `redirect-service`;*/
-
+/*CREATE DATABASE IF NOT EXISTS `redirect-service`;
+USE `redirect-service`;
+*/
 --
 -- Table structure for table `url`
 --
+DROP TABLE IF EXISTS `url`;
 
 CREATE TABLE IF NOT EXISTS `url`(
     `id` INT NOT NULL AUTO_INCREMENT,

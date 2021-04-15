@@ -13,12 +13,6 @@ public class HelperService {
     private static final SecureRandom random = new SecureRandom();
     private static final Base64.Encoder encoder = Base64.getUrlEncoder().withoutPadding();
 
-    private final UrlRepository urlRepository;
-
-    public HelperService(UrlRepository urlRepository) {
-        this.urlRepository = urlRepository;
-    }
-
     public String generateShortUrl() {
         byte[] buffer = new byte[8];
         random.nextBytes(buffer);
