@@ -1,6 +1,8 @@
 package de.ovsiannikov.redirectservice.dto;
 
 import lombok.*;
+import org.hibernate.validator.constraints.URL;
+
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
