@@ -11,7 +11,7 @@ public class UrlsPrototype {
     private final static LocalDateTime testDateFromUser = LocalDateTime.of(2021,8,10,12,00,00);
     private final static LocalDateTime testInvalidDateFromUser = LocalDateTime.of(2020,8,10,12,00,00);
 
-    public static Url testUrlWithoutExpirationDateFromUser() {
+    public static Url urlWithoutExpirationDateFromUser() {
         Url url = new Url();
         url.setId(1L);
         url.setCustomerNumber(0);
@@ -21,7 +21,7 @@ public class UrlsPrototype {
         return url;
     }
 
-    public static Url testUrlWithExpirationDateFromUser() {
+    public static Url urlWithExpirationDateFromUser() {
         Url url = new Url();
         url.setId(1L);
         url.setCustomerNumber(0);
@@ -31,7 +31,7 @@ public class UrlsPrototype {
         return url;
     }
 
-    public static Url testUrlWithInvalidExpirationDateFromUser() {
+    public static Url urlWithInvalidExpirationDateFromUser() {
         Url url = new Url();
         url.setId(1L);
         url.setCustomerNumber(0);
@@ -41,7 +41,7 @@ public class UrlsPrototype {
         return url;
     }
 
-    public static LongUrlDto testLongUrlDtoWithExpirationEqualsNull() {
+    public static LongUrlDto longUrlDtoWithExpirationEqualsNull() {
         LongUrlDto longUrlDto = new LongUrlDto();
         longUrlDto.setCustomerNumber(0L);
         longUrlDto.setLongUrl("https://www.test123");
@@ -50,7 +50,7 @@ public class UrlsPrototype {
     }
 
 
-    public static LongUrlDto testLongUrlDtoWithExpirationDateFromUser(LocalDateTime testDateFromUser) {
+    public static LongUrlDto longUrlDtoWithExpirationDateFromUser(LocalDateTime testDateFromUser) {
         LongUrlDto longUrlDto = new LongUrlDto();
         longUrlDto.setCustomerNumber(0L);
         longUrlDto.setLongUrl("https://www.test123");

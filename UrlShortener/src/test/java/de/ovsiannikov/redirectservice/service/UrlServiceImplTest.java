@@ -31,8 +31,8 @@ class UrlServiceImplTest {
 
     @Test
     void testCreateUrlWithoutExpirationDateFromUser() {
-        when(urlRepository.save(any())).thenReturn(testUrlWithoutExpirationDateFromUser());
-        Url url = urlService.createUrl(testLongUrlDtoWithExpirationEqualsNull());
+        when(urlRepository.save(any())).thenReturn(urlWithoutExpirationDateFromUser());
+        Url url = urlService.createUrl(longUrlDtoWithExpirationEqualsNull());
         assertThat(url).isNotNull();
         assertThat(url.getExpirationDate()).isEqualTo(testDate.plusDays(3));
         assertThat(url.getExpirationDate()).isAfter(testDate);
@@ -40,8 +40,8 @@ class UrlServiceImplTest {
 
     @Test
     void testCreateUrlWithExpirationDateFromUser() {
-        when(urlRepository.save(any())).thenReturn(testUrlWithExpirationDateFromUser());
-        Url url = urlService.createUrl(testLongUrlDtoWithExpirationDateFromUser(testDateFromUser));
+        when(urlRepository.save(any())).thenReturn(urlWithExpirationDateFromUser());
+        Url url = urlService.createUrl(longUrlDtoWithExpirationDateFromUser(testDateFromUser));
         assertThat(url).isNotNull();
         assertThat(url.getExpirationDate()).isEqualTo(testDateFromUser);
         assertThat(url.getExpirationDate()).isAfter(testDate);
@@ -49,8 +49,8 @@ class UrlServiceImplTest {
 
     @Test
     void testCreateUrlWithInvalidExpirationDateFromUser() {
-        when(urlRepository.save(any())).thenReturn(testUrlWithInvalidExpirationDateFromUser());
-        Url url = urlService.createUrl(testLongUrlDtoWithExpirationDateFromUser(testInvalidDateFromUser));
+        when(urlRepository.save(any())).thenReturn(urlWithInvalidExpirationDateFromUser());
+        Url url = urlService.createUrl(longUrlDtoWithExpirationDateFromUser(testInvalidDateFromUser));
         assertThat(url).isNotNull();
         assertThat(url.getExpirationDate()).isNotEqualTo(testDate);
         assertThat(url.getExpirationDate()).isBefore(testDate);
