@@ -10,6 +10,7 @@ public class UrlsPrototype {
     private final static LocalDateTime testCurrentDate = LocalDateTime.of(2021,4,14,10,00,00);
     private final static LocalDateTime testDateFromUser = LocalDateTime.of(2021,8,10,12,00,00);
 
+
     public static Url urlWithoutExpirationDateFromUser() {
         Url url = new Url();
         url.setId(1L);
@@ -29,6 +30,7 @@ public class UrlsPrototype {
         url.setExpirationDate(testDateFromUser);
         return url;
     }
+
 
     public static LongUrlDto longUrlDtoWithExpirationEqualsNull() {
         LongUrlDto longUrlDto = new LongUrlDto();
@@ -52,7 +54,6 @@ public class UrlsPrototype {
 
         shortUrlDto.setId(26L);
         shortUrlDto.setShortUrl("test1234");
-
         return shortUrlDto;
     }
 }
