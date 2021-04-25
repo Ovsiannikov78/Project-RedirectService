@@ -1,12 +1,10 @@
 package de.ovsiannikov.redirectservice.entity;
 
 import lombok.*;
-
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
-@Entity
 @Data
+@Entity
 @NoArgsConstructor
 @Table(name = "redirect_statistic")
 public class RedirectStatistic {
@@ -24,6 +22,12 @@ public class RedirectStatistic {
     @Column(name = "long_url")
     private String longUrl;
 
-    @Column(name = "current_date")
-    private LocalDateTime currentDate;
+    @Column(name = "counter")
+    private Long counter;
+
+    public RedirectStatistic(@NonNull String shortUrl, @NonNull String longUrl, Long counter) {
+        this.shortUrl = shortUrl;
+        this.longUrl = longUrl;
+        this.counter = counter;
+    }
 }

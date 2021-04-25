@@ -9,18 +9,20 @@ import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class LongUrlDto {
 
-    public Long customerNumber;
+    private Long customerNumber;
+
+    // TODO Validation for whitespace !!!
 
     @NotBlank(message = "Please, provide a url")
     @URL(message = "Please, provide valid url")
-    public String longUrl;
+    private String longUrl;
 
     @Future(message = "The date can't be in the past. Please provide a valid date.")
-    public LocalDateTime expirationDate;
+    private LocalDateTime expirationDate;
 }

@@ -1,6 +1,5 @@
 package de.ovsiannikov.redirectservice.service;
 
-import de.ovsiannikov.redirectservice.dao.UrlRepository;
 import org.springframework.stereotype.Service;
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
@@ -22,7 +21,7 @@ public class HelperService {
     public LocalDateTime createUrlExpirationDate(LocalDateTime expirationDate) {
 
         if (expirationDate == null) {
-            return LocalDateTime.now().plusMinutes(3);  //with minutes for testing only
+            return LocalDateTime.now().plusHours(2);
         } else {
             return LocalDateTime.parse(expirationDate.toString());
         }

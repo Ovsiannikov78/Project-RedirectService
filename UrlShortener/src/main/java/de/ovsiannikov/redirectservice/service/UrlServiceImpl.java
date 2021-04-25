@@ -54,6 +54,4 @@ public class UrlServiceImpl implements UrlService {
     public void deleteUrl(Long id) {
         urlRepository.deleteById(id);
     }
-
-
 }
