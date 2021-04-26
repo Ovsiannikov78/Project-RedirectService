@@ -3,9 +3,7 @@ package de.ovsiannikov.redirectservice.dto;
 import lombok.*;
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
-@ToString
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(exclude = "currentDate")

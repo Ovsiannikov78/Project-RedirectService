@@ -20,9 +20,9 @@ public class StatisticsConsumerService {
     @KafkaListener(topics = topic, groupId = groupId, containerFactory = "kafkaListenerContainerFactory")
     public void listen(List<RedirectStatisticDto> statisticDto) {
 
-        statisticsService.saveToDB(statisticDto);
+        statisticsService.createOrUpdateRedirectStatisticInDB(statisticDto);
 
-          System.out.println("\n/******* The consumer received a statistic :  ---->>>>>>    ONE ********/\n"+statisticDto);
+        System.out.println("List of RedirectStatisticDto from KafkaConsumer -" + statisticDto.toString());
     }
 }
 

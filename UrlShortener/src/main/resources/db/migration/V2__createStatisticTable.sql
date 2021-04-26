@@ -6,9 +6,9 @@ DROP TABLE IF EXISTS `redirect_statistic`;
 
 CREATE TABLE IF NOT EXISTS `redirect_statistic`(
     `id` INT NOT NULL AUTO_INCREMENT,
-    `long_url` VARCHAR (255) NOT NULL DEFAULT '',
-    `short_url` VARCHAR(255) NOT NULL DEFAULT '',
     `counter` VARCHAR(255) NULL DEFAULT NULL,
+    `short_url` VARCHAR(255) NOT NULL DEFAULT '',
+    `long_url` VARCHAR (255) NOT NULL DEFAULT '',
     PRIMARY KEY(`id`),
     UNIQUE (`short_url`))
     ENGINE = InnoDB

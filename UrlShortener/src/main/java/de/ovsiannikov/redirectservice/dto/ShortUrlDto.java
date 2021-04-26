@@ -1,12 +1,8 @@
 package de.ovsiannikov.redirectservice.dto;
 
 import lombok.*;
-import org.hibernate.validator.constraints.UniqueElements;
 
-@Getter
-@Setter
-@ToString
-@UniqueElements
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class ShortUrlDto {
