@@ -1,5 +1,6 @@
 package de.ovsiannikov.redirectservice.controller;
 
+import de.ovsiannikov.redirectservice.dto.StatisticDto;
 import de.ovsiannikov.redirectservice.service.StatisticsService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +17,9 @@ public class StatisticsController {
         this.statisticsService = statisticsService;
     }
 
-    @PostMapping("/statistics")
-    public ResponseEntity<List<String>> getStatisticOfTheShortUrl () {
+
+    @GetMapping("/statistics")
+    public ResponseEntity<List<StatisticDto>> getStatisticOfTheShortUrl () {
 
         return new ResponseEntity<>(statisticsService.getTheMostFrequentlyUsedShortUrls(), HttpStatus.OK);
     }

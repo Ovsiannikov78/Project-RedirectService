@@ -18,11 +18,8 @@ public interface StatisticsRepository extends JpaRepository<RedirectStatistic, L
 
     RedirectStatistic save(Optional<RedirectStatistic> redirectStatistic);
 
-    // TODO можно ли Limit значения передать как парамметры
-
-    @Query(value = "SELECT counter, short_url FROM `redirect-service`.redirect_statistic ORDER BY cast(counter as SIGNED) DESC Limit 0, 5;", nativeQuery = true)
-    List<String> findTop5ShortUrl();
-
+    @Query(value = "SELECT id, counter, short_url, long_url FROM `redirect-service`.redirect_statistic ORDER BY cast(counter as SIGNED) DESC Limit 0, 5;", nativeQuery = true)
+    List<RedirectStatistic> findTop5ShortUrl();
 
     @Modifying
     @Query(value = "insert into `redirect-service`.redirect_statistic (counter, short_url, long_url) VALUES(:counter" +
