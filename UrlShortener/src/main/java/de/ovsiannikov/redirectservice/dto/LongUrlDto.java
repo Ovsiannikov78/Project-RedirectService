@@ -1,5 +1,6 @@
 package de.ovsiannikov.redirectservice.dto;
 
+import de.ovsiannikov.redirectservice.validator.LongUrlConstraint;
 import lombok.*;
 import org.hibernate.validator.constraints.URL;
 import javax.validation.constraints.Future;
@@ -12,8 +13,7 @@ public class LongUrlDto {
 
     private Long customerNumber;
 
-    // TODO Validation for whitespace !!!
-
+    @LongUrlConstraint
     @NotBlank(message = "Please, provide a url")
     @URL(message = "Please, provide valid url")
     private String longUrl;

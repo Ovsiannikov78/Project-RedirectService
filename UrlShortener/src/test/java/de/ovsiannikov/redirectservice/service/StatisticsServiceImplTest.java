@@ -45,5 +45,4 @@ class StatisticsServiceImplTest {
         verify(statisticsRepository,times(1)).updateRedirectStatistic(2L,"ekl","google");
         verify(statisticsRepository,times(1)).updateRedirectStatistic(4L,"mno","apple");
     }
-
 }
