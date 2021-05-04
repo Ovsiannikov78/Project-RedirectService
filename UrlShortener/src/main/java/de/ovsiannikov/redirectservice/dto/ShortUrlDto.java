@@ -1,16 +1,13 @@
 package de.ovsiannikov.redirectservice.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 public class ShortUrlDto {
 
-    public Long id;
-    public String shortUrl;
+    private Long id;
+
+    private String shortUrl;
 }

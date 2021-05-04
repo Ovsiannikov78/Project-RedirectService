@@ -30,7 +30,12 @@ public class UrlServiceImpl implements UrlService {
         Url url = new Url(helperService.generateShortUrl(), longUrlDto.getLongUrl(), 0,
                 helperService.createUrlExpirationDate(longUrlDto.getExpirationDate()));
         return urlRepository.save(url);
+    }
 
+    @Override
+    public ShortUrlDto createShortUrlDto(LongUrlDto longUrlDto) {
+        Url url = createUrl(longUrlDto);
+        return new ShortUrlDto(url.getId(), url.getShortUrl());
     }
 
     @Override

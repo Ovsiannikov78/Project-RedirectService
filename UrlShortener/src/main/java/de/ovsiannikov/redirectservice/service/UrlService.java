@@ -3,8 +3,6 @@ package de.ovsiannikov.redirectservice.service;
 import de.ovsiannikov.redirectservice.dto.LongUrlDto;
 import de.ovsiannikov.redirectservice.dto.ShortUrlDto;
 import de.ovsiannikov.redirectservice.entity.Url;
-
-import java.time.LocalDateTime;
 import java.util.List;
 
 
