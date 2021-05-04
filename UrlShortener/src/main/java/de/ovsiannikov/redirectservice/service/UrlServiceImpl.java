@@ -36,12 +36,6 @@ public class UrlServiceImpl implements UrlService {
     public ShortUrlDto createShortUrlDto(LongUrlDto longUrlDto) {
         Url url = createUrl(longUrlDto);
         return new ShortUrlDto(url.getId(), url.getShortUrl());
-    }
-
-    @Override
-    public ShortUrlDto createShortUrlDto(LongUrlDto longUrlDto) {
-        Url url = createUrl(longUrlDto);
-        return new ShortUrlDto(url.getId(), url.getShortUrl());
 
     }
 

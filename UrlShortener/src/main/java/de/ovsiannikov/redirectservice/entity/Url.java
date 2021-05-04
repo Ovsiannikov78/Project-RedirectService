@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Data
 @NoArgsConstructor
 @Table(name = "url")
 public class Url {
