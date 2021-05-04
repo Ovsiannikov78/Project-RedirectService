@@ -20,7 +20,7 @@ import java.util.Map;
 
 @EnableKafka
 @Configuration
-public class KafkaConsumerConfig {
+public class KafkaConfig {
 
 
     @Bean

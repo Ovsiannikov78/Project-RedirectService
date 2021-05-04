@@ -15,12 +15,19 @@ public class StatisticPrototypes {
     static RedirectStatisticDto st3 = new RedirectStatisticDto("mno","apple", LocalDateTime.now());
 
 
-    static StatisticDto st4 = new StatisticDto(10L,"url","netflix");
-    static StatisticDto st5 = new StatisticDto(23L,"gdr","berlin");
-    static StatisticDto st6 = new StatisticDto(3L,"aus","australia");
-    static StatisticDto st7 = new StatisticDto(12L,"abc","microsoft");
-    static StatisticDto st8 = new StatisticDto(5L,"ekl","google");
-    static StatisticDto st9 = new StatisticDto(8L,"mno","apple");
+    static StatisticDto st4 = new StatisticDto("url","netflix",10L);
+    static StatisticDto st5 = new StatisticDto("gdr","berlin",23L);
+    static StatisticDto st6 = new StatisticDto("aus","australia",3L);
+    static StatisticDto st7 = new StatisticDto("abc","microsoft",12L);
+    static StatisticDto st8 = new StatisticDto("ekl","google",5L);
+    static StatisticDto st9 = new StatisticDto("mno","apple",8L);
+
+    static RedirectStatistic rd1 = new RedirectStatistic("gdr","berlin",23L);
+    static RedirectStatistic rd2 = new RedirectStatistic("abc","microsoft",12L);
+    static RedirectStatistic rd3 = new RedirectStatistic("url","netflix",10L);
+    static RedirectStatistic rd4 = new RedirectStatistic("mno","apple",8L);
+    static RedirectStatistic rd5 = new RedirectStatistic("ekl","google",5L);
+    static RedirectStatistic rd6 = new RedirectStatistic("aus","australia",3L);
 
 
     public static List<RedirectStatisticDto> redirectStatisticDtoListFromKafka() {
@@ -103,4 +110,18 @@ public class StatisticPrototypes {
 
         return list;
     }
+
+    public static List<RedirectStatistic> redirectStatisticList() {
+
+        List<RedirectStatistic> list = new ArrayList<>();
+        list.add(rd1);
+        list.add(rd2);
+        list.add(rd3);
+        list.add(rd4);
+        list.add(rd5);
+        list.add(rd6);
+
+        return list;
+    }
+
 }

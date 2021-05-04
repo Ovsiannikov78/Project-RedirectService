@@ -2,7 +2,7 @@ package de.ovsiannikov.redirectservice.service;
 
 import de.ovsiannikov.redirectservice.dao.UrlRepository;
 import de.ovsiannikov.redirectservice.dto.RedirectStatisticDto;
-import de.ovsiannikov.redirectservice.kafka.service.StatisticsProducerService;
+import de.ovsiannikov.redirectservice.kafka.service.KafkaProducerService;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -11,9 +11,9 @@ import java.util.Optional;
 public class RedirectServiceImpl implements RedirectService {
 
     private final UrlRepository urlRepository;
-    private final StatisticsProducerService producerService;
+    private final KafkaProducerService producerService;
 
-    public RedirectServiceImpl(UrlRepository urlRepository, StatisticsProducerService producerService) {
+    public RedirectServiceImpl(UrlRepository urlRepository, KafkaProducerService producerService) {
         this.urlRepository = urlRepository;
         this.producerService = producerService;
     }

@@ -42,7 +42,7 @@ public class StatisticsServiceImpl implements StatisticsService {
 
         return statisticsRepository.findTop5ShortUrl()
                 .stream()
-                .map(list -> new StatisticDto(list.getCounter(), list.getShortUrl(), list.getLongUrl()))
+                .map(list -> new StatisticDto(list.getShortUrl(), list.getLongUrl(), list.getCounter()))
                 .collect(Collectors.toList());
     }
 }

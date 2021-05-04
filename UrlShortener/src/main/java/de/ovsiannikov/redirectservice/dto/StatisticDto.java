@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class StatisticDto {
 
-    private Long counter;
-
     private String shortUrl;
 
     private String longUrl;
+
+    private Long counter;
 }

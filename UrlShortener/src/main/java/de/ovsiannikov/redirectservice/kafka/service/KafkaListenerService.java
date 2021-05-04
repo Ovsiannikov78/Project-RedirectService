@@ -9,7 +9,7 @@ import java.util.List;
 
 @Data
 @Service
-public class StatisticsConsumerService {
+public class KafkaListenerService {
 
     private final static String topic = "redirect-statistic";
     private final static String groupId = "statistic";

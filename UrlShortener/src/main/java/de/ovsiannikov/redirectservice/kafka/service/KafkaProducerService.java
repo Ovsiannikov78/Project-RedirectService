@@ -9,14 +9,14 @@ import org.springframework.stereotype.Service;
 
 @Data
 @Service
-public class StatisticsProducerService {
+public class KafkaProducerService {
 
     private final KafkaTemplate <String, RedirectStatisticDto> kafkaTemplate;
 
     @Value("${app.topic}")
     private String topic;
 
-    public StatisticsProducerService (KafkaTemplate <String, RedirectStatisticDto> kafkaTemplate) {
+    public KafkaProducerService(KafkaTemplate <String, RedirectStatisticDto> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
