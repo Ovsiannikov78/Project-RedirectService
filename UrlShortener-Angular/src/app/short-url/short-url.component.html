@@ -1,0 +1,11 @@
+<div class="container mt-5">
+
+    <h2>Short URL</h2>
+    <div class="card" *ngIf="shortLink">
+     <a routerLink="redirectToTheLongUrl()"  class="card-body">{{shortLink.shortUrl}}</a>
+    </div>
+
+  <br>
+  <a routerLink="/">Home</a>
+  </div>
+

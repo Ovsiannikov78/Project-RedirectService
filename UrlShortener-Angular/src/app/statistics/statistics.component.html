@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Statistics</title>
+  <meta charset="utf-8"/>
+</head>
+<body>
+
+<div class="container">
+  <br>
+<h2>Top 5 Most Used Short Links</h2>
+<br><br>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-light">
+    <tr>
+      <th>Short Url</th>
+      <th>Long Url</th>
+      <th>Counter</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let tempStatistic of statistics">
+      <td>{{ tempStatistic.shortUrl}}</td>
+      <td>{{ tempStatistic.longUrl}}</td>
+      <td>{{tempStatistic.counter}}</td>
+    </tr>
+    <br>
+    <a routerLink="/">Home</a>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

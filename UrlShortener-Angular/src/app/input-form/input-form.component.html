@@ -1,0 +1,64 @@
+<div class="container mt-5">
+  <form class="card" [formGroup]="form" (ngSubmit)="createShortUrl()">
+
+    <div class="card-header">URL Shortener With Spring Boot</div>
+
+    <div class="card-body">
+
+      <div class="form-control">
+        <label for="customer_number">Customer Number:</label>
+        <input type="number" id="customer_number" formControlName="customer_number" [(ngModel)]="longUrl.customerNumber"
+               maxlength="255" required>
+        <div class="has-validation"
+             *ngIf="form.get('customer_number').invalid && form.get('customer_number').touched">
+
+          <small *ngIf="form.get('customer_number').errors.required">
+            The field cannot be empty. Please fill out the field.
+          </small>
+
+          <small *ngIf="form.get('customer_number').errors.minLength">
+            The field must contain at least 1 character
+          </small>
+
+        </div>
+      </div>
+
+      <div class="form-control">
+        <label for="url_input">Long URL:</label>
+        <input type="url" id="url_input" formControlName="url_input" maxlength="255" [(ngModel)]="longUrl.longUrl">
+        <div class="has-validation"
+             *ngIf="form.get('url_input').invalid && form.get('url_input').touched">
+
+          <small *ngIf="form.get('url_input').errors.required">
+            The field cannot be empty. Please fill out the field.
+          </small>
+
+          <small *ngIf="form.get('url_input').errors.pattern">
+            Please enter the valid e-mail
+          </small>
+
+        </div>
+      </div>
+
+      <div class="form-control">
+        <label for="expiration_date_input">Expiration Date:</label>
+        <input type="datetime-local" id="expiration_date_input" formControlName="expiration_date_input" maxlength="255"
+               [(ngModel)]="longUrl.expirationDate"/>
+      </div>
+
+      <button routerLink="shorturl" type="submit" class="btn btn-primary" [disabled]="form.invalid"
+              (click)="createShortUrl()">Click here to get Short URL
+      </button>
+
+    </div>
+  </form>
+
+  <div class="card-action">
+
+    <br>
+    <a routerLink="/statistics" class="btn btn-primary" type="button">Top Most Used Sort Links</a>
+
+  </div>
+
+</div>
+

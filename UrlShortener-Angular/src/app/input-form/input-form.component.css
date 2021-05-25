@@ -1,0 +1,26 @@
+.btn-primary {
+  margin-top: 10px;
+}
+
+.form-group {
+  margin-top: 5px;
+}
+
+a {
+  background-color: forestgreen;
+  border-color: forestgreen;
+}
+
+p {
+  font-size: 1.5rem;
+}
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+  }
+input.ng-valid.ng-touched {
+    border: 1px solid green;
+  }
+
+small {
+  color: red;
+}
