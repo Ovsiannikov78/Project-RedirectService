@@ -13,21 +13,21 @@ import {Router} from '@angular/router';
 })
 export class ShortUrlComponent implements OnInit {
 
-  shortLink: ShortUrl;
+  shortUrl: ShortUrl;
 
   private redirectUrl = 'http://localhost:8090/';
 
   constructor(private urlService: UrlService,
-              private http: HttpClient,
-              private router: Router) { }
+              private http: HttpClient
+             ) { }
 
 
   ngOnInit(): void {
-    this.shortLink = this.urlService.shortUrl;
-    console.log('ShortUrlLink from short-url-component ', this.shortLink);
+    this.shortUrl = this.urlService.shortUrl;
+    console.log('ShortUrlLink from short-url-component ', this.shortUrl);
   }
 
   redirectToTheLongUrl(): void {
-    this.http.get<void>(this.redirectUrl + this.shortLink.shortUrl);
+    this.http.get<void>(this.redirectUrl + this.shortUrl.shortUrl);
   }
 }
