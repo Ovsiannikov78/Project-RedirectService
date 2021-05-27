@@ -24,3 +24,7 @@ input.ng-valid.ng-touched {
 small {
   color: red;
 }
+
+div.card-header {
+    text-align: center;
+}

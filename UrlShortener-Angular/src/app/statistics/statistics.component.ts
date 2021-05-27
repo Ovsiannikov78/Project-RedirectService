@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {StatisticService} from '../services/statistic.service';
 import {Statistic} from '../model/statistic';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-statistics',
@@ -9,7 +10,7 @@ import {Statistic} from '../model/statistic';
 })
 export class StatisticsComponent implements OnInit {
 
-  statistics: Statistic[];
+  statistics: Observable<Statistic[]>;
 
   constructor(private statisticService: StatisticService) { }
 
@@ -17,11 +18,8 @@ export class StatisticsComponent implements OnInit {
     this.top5StatisticList();
   }
 
-  private top5StatisticList() {
-    this.statisticService.getStatistic().subscribe(
-      data => {
-        this.statistics = data;
-      }
-    );
+
+  private top5StatisticList(): void {
+     this.statistics = this.statisticService.getStatistic();
   }
 }
