@@ -13,8 +13,6 @@ import {Router} from '@angular/router';
 })
 export class InputFormComponent implements OnInit {
 
-  // TODO find working Regex
-
   private urlReg = /(^|\s)((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi;
 
   form: FormGroup;

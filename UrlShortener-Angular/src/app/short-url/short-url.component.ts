@@ -17,8 +17,7 @@ export class ShortUrlComponent implements OnInit {
 
   private redirectUrl = 'http://localhost:8090/';
 
-  constructor(private urlService: UrlService,
-              private http: HttpClient
+  constructor(private urlService: UrlService
              ) { }
 
 
@@ -28,6 +27,6 @@ export class ShortUrlComponent implements OnInit {
   }
 
   redirectToTheLongUrl(): void {
-    this.http.get<void>(this.redirectUrl + this.shortUrl.shortUrl);
+    window.location.href = this.redirectUrl + this.shortUrl.shortUrl;
   }
 }
