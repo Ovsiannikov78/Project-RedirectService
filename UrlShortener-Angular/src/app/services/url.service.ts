@@ -18,6 +18,6 @@ export class UrlService {
 
 
   generateShortUrl(longUrl: LongUrl): Observable<ShortUrl> {
-   return  this.http.post<ShortUrl>(this.inputFormUrl, longUrl);
+   return this.http.post<ShortUrl>(this.inputFormUrl, longUrl);
   }
 }

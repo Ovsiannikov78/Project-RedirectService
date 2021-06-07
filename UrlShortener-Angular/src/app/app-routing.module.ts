@@ -8,11 +8,8 @@ import {RedirectComponent} from './redirect/redirect.component';
 const routes: Routes = [
   {path: '', redirectTo: '/urls', pathMatch: 'full'},
   {path: 'urls', component: InputFormComponent},
-  {path: 'urls/shorturl/{shortUrl}', component: RedirectComponent},
   {path: 'urls/shorturl', component: ShortUrlComponent},
   {path: 'statistics', component: StatisticsComponent}
-  /*{path: 'urls/statistics', redirectTo: '/statistics', component: StatisticsComponent},*/
-
 ];
 
 @NgModule({

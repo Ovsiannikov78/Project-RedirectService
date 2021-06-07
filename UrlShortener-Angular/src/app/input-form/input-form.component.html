@@ -1,47 +1,47 @@
-<form class="card" [formGroup]="form" (ngSubmit)="createShortUrl()">
+<div class="card">
 
     <div class="card-header">URL Shortener With Spring Boot</div>
+<form [formGroup]="form" (ngSubmit)="createShortUrl()">
 
     <div class="card-body">
 
-      <div class="form-control">
+      <div class="form-group">
         <label for="customer_number">Customer Number:</label>
-        <input type="number" id="customer_number" formControlName="customer_number" [(ngModel)]="longUrl.customerNumber">
+        <input type="number" id="customer_number" class="form-control" formControlName="customerNumber">
         <div class="has-validation"
-             *ngIf="form.get('customer_number').invalid && form.get('customer_number').touched">
+             *ngIf="form.get('customerNumber').invalid && form.get('customerNumber').touched">
 
-          <small *ngIf="form.get('customer_number').errors.required">
+          <small *ngIf="form.get('customerNumber').errors.required">
             The field cannot be empty. Please fill out the field.
           </small>
 
-          <small *ngIf="form.get('customer_number').errors.minLength">
+          <small *ngIf="form.get('customerNumber').errors.minLength">
             The field must contain at least 1 character
           </small>
 
         </div>
       </div>
 
-      <div class="form-control">
+      <div class="form-group">
         <label for="url_input">Long URL:</label>
-        <input type="url" id="url_input" formControlName="url_input" [(ngModel)]="longUrl.longUrl">
+        <input type="url" id="url_input" class="form-control" formControlName="urlInput">
         <div class="has-validation"
-             *ngIf="form.get('url_input').invalid && form.get('url_input').touched">
+             *ngIf="form.get('urlInput').invalid && form.get('urlInput').touched">
 
-          <small *ngIf="form.get('url_input').errors.required">
+          <small *ngIf="form.get('urlInput').errors.required">
             The field cannot be empty. Please fill out the field.
           </small>
 
-          <small *ngIf="form.get('url_input').errors.pattern">
+          <small *ngIf="form.get('urlInput').errors.pattern">
             Please enter the valid e-mail
           </small>
 
         </div>
       </div>
 
-      <div class="form-control">
+      <div class="form-group">
         <label for="expiration_date_input">Expiration Date:</label>
-        <input type="datetime-local" id="expiration_date_input" formControlName="expiration_date_input"
-               [(ngModel)]="longUrl.expirationDate"/>
+        <input type="datetime-local" id="expiration_date_input" class="form-control" formControlName="expirationDateInput"/>
       </div>
 
       <button type="submit" class="btn btn-primary" [disabled]="form.invalid"
@@ -50,4 +50,4 @@
 
     </div>
   </form>
-
+</div>

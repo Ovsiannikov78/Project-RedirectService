@@ -19,30 +19,40 @@ export class InputFormComponent implements OnInit {
   longUrl: LongUrl = {};
   @Output() shortUrl: Observable<ShortUrl>;
 
+  tempModel: {customerNumber: number, urlInput: string, expirationDateInput: Date };
+
   constructor(private urlService: UrlService,
-              private router: Router) {
+              private router: Router,
+              private builder: FormBuilder) {
   }
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      customer_number: new FormControl('', [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(10)
-      ]),
-      url_input: new FormControl('', [
-        Validators.required,
-        Validators.pattern(this.urlReg),
-        Validators.maxLength(255)
-      ]),
-      expiration_date_input: new FormControl('', [
-          Validators.maxLength(100)
-      ])
-      }
+    this.form = this.builder.group({
+      customerNumber: ['',
+            [
+            Validators.required,
+            Validators.minLength(1),
+            Validators.maxLength(10)
+            ]
+          ],
+          urlInput: ['',
+            [
+            Validators.required,
+            Validators.pattern(this.urlReg),
+            Validators.maxLength(255)
+            ]
+          ],
+      expirationDateInput: ['',
+            [ Validators.maxLength(100) ]
+          ]
+        }
     );
   }
 
   createShortUrl(): void {
+
+    this.tempModel = this.form.value;
+    console.log(this.tempModel);
 
     this.urlService.generateShortUrl(this.longUrl).subscribe(
         data => {

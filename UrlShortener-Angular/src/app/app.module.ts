@@ -9,15 +9,13 @@ import {HttpClientModule} from '@angular/common/http';
 import {UrlService} from './services/url.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {StatisticService} from './services/statistic.service';
-import { RedirectComponent } from './redirect/redirect.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StatisticsComponent,
     InputFormComponent,
-    ShortUrlComponent,
-    RedirectComponent
+    ShortUrlComponent
   ],
   imports: [
     HttpClientModule,
