@@ -1,6 +1,4 @@
 <h2>Short URL</h2>
 <div class="card" *ngIf="shortUrl">
-    <a (click)="redirectToTheLongUrl()" class="card-body">{{shortUrl.shortUrl}}</a>
+    <a (click)="redirectToTheLongUrl()" class="card-body" style="cursor: pointer">{{shortUrl}}</a>
 </div>
-
-

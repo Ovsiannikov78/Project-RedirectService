@@ -1,34 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import {UrlService} from '../services/url.service';
-import {ShortUrl} from '../model/short-url';
-import {LongUrl} from '../model/long-url';
-import {Observable} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
-import {Router} from '@angular/router';
-
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-short-url',
   templateUrl: './short-url.component.html',
   styleUrls: ['./short-url.component.css']
 })
 export class ShortUrlComponent implements OnInit {
-
-  shortUrl: ShortUrl;
+  shortUrl: string;
 
   private redirectUrl = 'http://localhost:8090/';
 
-  constructor(private urlService: UrlService) { }
+  url: string | undefined;
 
-
-  ngOnInit(): void {
-    this.shortUrl = this.urlService.shortUrl;
-    console.log('ShortUrlLink from short-url-component ', this.shortUrl);
+  constructor(private route: ActivatedRoute) {
   }
-
+  ngOnInit(): void {
+    this.shortUrl = this.route.snapshot.paramMap.get('shortUrlId');
+    this.url = this.redirectUrl + this.shortUrl;
+  }
   redirectToTheLongUrl(): void {
-    /*this.http.get<any>(this.redirectUrl + this.shortUrl.shortUrl).subscribe(
-       data => console.log('Data from redirect ', data)*/
-    window.location.href = this.redirectUrl + this.shortUrl.shortUrl;
-       /*);*/
+    window.location.href = this.url;
   }
 }

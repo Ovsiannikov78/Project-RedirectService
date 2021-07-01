@@ -1,7 +1,8 @@
-/*table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}*/
+th{
+  background-color: lightsteelblue;
+  border: 1px solid darkgray;
+
+}
 th, td {
   padding: 5px;
 }
@@ -17,4 +18,7 @@ h2 {
   text-align: center;
 }
 
+#barchart {
+  margin-top: 5em;
+}
 
