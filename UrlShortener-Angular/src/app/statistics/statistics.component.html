@@ -1,0 +1,26 @@
+<h2>Top 5 Most Used Short Links</h2>
+  <br><br>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-light">
+    <tr>
+      <th>Short Url</th>
+      <th>Long Url</th>
+      <th>Number of uses</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let tempStatistic of statistics | async">
+      <td>{{ tempStatistic.shortUrl}}</td>
+      <td>{{ tempStatistic.longUrl}}</td>
+      <td>{{tempStatistic.counter}}</td>
+    </tr>
+    </tbody>
+
+  </table>
+
+<div id="barchart">
+  <h2>Statistics in horizontal bar chart</h2>
+    <app-statistics-bar-chart></app-statistics-bar-chart>
+</div>
+

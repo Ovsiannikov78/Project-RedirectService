@@ -1,0 +1,12 @@
+<div class="col offset-sm-2 col-sm-8 col col offset-sm-2" style="display: block" *ngIf="loading">
+    <canvas baseChart
+            [chartType]="barChartType"
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [colors]="barChartColors"
+            [options]="barChartOptions"
+            [legend]="false"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)">
+    </canvas>
+</div>
