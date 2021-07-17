@@ -1,0 +1,26 @@
+version: '3.3'
+services:
+  app:
+   container_name: redirect-service
+   #image: web-customer-tracker:latest
+   build: .
+   ports:
+     - "8090:8090"
+   depends_on:
+     db:
+       condition: service_healthy
+  db:
+   container_name: db
+   image: mysql:8.0.23
+   environment:
+     MYSQL_ROOT_PASSWORD: Sergi8010026
+     MYSQL_DATABASE: redirect-service
+     MYSQL_USER: redirect
+     MYSQL_PASSWORD: redirect-pas
+   volumes:
+     - ./db/mysql-datadir:/var/lib/mysql
+     - ./dbdump:/docker-entrypoint-initdb.d
+   ports:
+     - "3306:3306"
+   healthcheck:
+     test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
